@@ -1,0 +1,35 @@
+<h2>Gestion des notes</h2>
+
+<div>
+    <a (click)="startEditing()" href="#">Ajouter/Editer une note</a>
+</div>
+
+<ul>
+    @for(note of notes; track $index) {
+      <li (dblclick)="startEditing(note.id,note.title, note.content);">
+        <app-note [id]="note.id" [title]="note.title" [content]="note.content" [tags]="note.tags"></app-note>
+        <a href="#" (click)="deleteNote(note)">X</a>
+      </li>
+    } @empty {
+      <li>Aucune note !</li>
+    }
+</ul>
+
+  <a href="#" (click)="dialogAddNote()">Ajouter une note</a>
+
+  @if (editing) {
+    <h3>{{editing.id == 0 ? "Ajouter" : "Modifier"}} une note</h3>
+  <form (ngSubmit)="saveNote()" #noteForm="ngForm">
+    <label for="title">Titre</label>
+    <input type="text" name="title" [(ngModel)]="editing.title">
+    <label for="content">Contenu</label>
+    <input type="text" name="content" id="" [(ngModel)]="editing.content">
+  
+    <button type="submit">Sauvegarder</button>
+    <button type="button" (click)="cancelEditing()">Annuler</button>
+  </form>
+  }
+
+<div>
+    <a (click)="startEditing()" href="#">Ajouter/Editer une note</a>
+</div>

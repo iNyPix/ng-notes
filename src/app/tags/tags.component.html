@@ -1,0 +1,36 @@
+<h2>Gestion des tags</h2>
+
+<div>
+  <a (click)="startEditing()" href="#">Ajouter/Editer un tag</a>
+</div>
+
+<ul>
+  @for(tag of tags; track $index) {
+    <li (dblclick)="startEditing(tag.id,tag.name,tag.color);" style="background-color: {{tag.color}};">
+      <app-tag [id]="tag.id" [name]="tag.name" [color]="tag.color"></app-tag>
+      <a href="#" (click)="deleteTag(tag)">X</a>
+    </li>
+    
+  } @empty {
+    <li>Aucun tag !</li>
+  }
+</ul>
+
+<a href="#" (click)="dialogAddTag()">Ajouter un tag</a>
+
+@if (editing) {
+  <h3>{{editing.id == 0 ? "Ajouter" : "Modifier"}} un tag</h3>
+<form (ngSubmit)="saveTag()" #tagForm="ngForm">
+  <label for="name">Name</label>
+  <input type="text" name="name" [(ngModel)]="editing.name">
+  <label for="color">Color</label>
+  <input type="color" name="color" id="" [(ngModel)]="editing.color">
+
+  <button type="submit">Sauvegarder</button>
+  <button type="button" (click)="cancelEditing()">Annuler</button>
+</form>
+}
+
+<div>
+  <a (click)="startEditing()" href="#">Ajouter/Editer un tag</a>
+</div>
