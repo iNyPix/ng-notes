@@ -1,0 +1,259 @@
+/* Style global pour la page */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Conteneur principal */
+div, ul, form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Titre principal */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Liens pour ajouter/éditer */
+a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* Liste des tags */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* La couleur de fond est définie dynamiquement via style="background-color: {{tag.color}}" */
+    color: #000; /* Texte noir par défaut pour contraste avec fonds clairs */
+}
+
+/* Amélioration du contraste pour les couleurs dynamiques */
+li[style*="background-color"] {
+    background-color: rgba(var(--tag-color), 0.9);
+}
+
+/* Détection des fonds clairs pour ajuster la couleur du texte */
+li[style*="background-color: #fff"],
+li[style*="background-color: #ffffff"],
+li[style*="background-color: rgb(255, 255, 255)"] {
+    color: #2c3e50; /* Texte sombre pour fond blanc */
+}
+
+/* Pour les fonds clairs dynamiques (approximation) */
+li[style*="background-color"]:not([style*="rgb(0, 0, 0)"]):not([style*="rgb(255, 0, 0)"]):not([style*="rgb(0, 128, 0)"]):not([style*="rgb(0, 0, 255)"]) {
+    color: #2c3e50; /* Texte sombre pour fonds clairs */
+}
+
+/* Pour les fonds sombres dynamiques */
+li[style*="background-color: #000"],
+li[style*="background-color: #000000"],
+li[style*="background-color: rgb(0, 0, 0)"],
+li[style*="background-color: rgb(255, 0, 0)"],
+li[style*="background-color: rgb(0, 128, 0)"],
+li[style*="background-color: rgb(0, 0, 255)"] {
+    color: #fff; /* Texte blanc pour fonds sombres */
+}
+
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Style du composant tag */
+app-tag {
+    flex-grow: 1;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Bouton de suppression */
+li a {
+    color: #e74c3c;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+li a:hover {
+    color: #c0392b;
+}
+
+/* Message "Aucun tag" */
+li:empty::after {
+    content: "Aucun tag !";
+    color: #7f8c8d;
+    font-style: italic;
+    text-align: center;
+    display: block;
+    padding: 20px;
+}
+
+/* Formulaire d'ajout/édition */
+form {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="color"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="color"] {
+    height: 40px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+input[type="text"]:focus,
+input[type="color"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Boutons du formulaire */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"] {
+    background: #2ecc71;
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+}
+
+button[type="button"] {
+    background: #e74c3c;
+    color: #fff;
+    margin-left: 10px;
+}
+
+button[type="button"]:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* Animation pour l'apparition du formulaire */
+form {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    div, ul, form {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    input[type="color"] {
+        height: 50px;
+    }
+}
+
+/* Style pour le bouton "Ajouter +" */
+div a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Largeur fixe pour un cercle parfait */
+    height: 40px; /* Hauteur fixe pour un cercle parfait */
+    background: #3498db; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border-radius: 50%; /* Rend le bouton rond */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem; /* Taille du texte */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+div a:hover {
+    background: #2980b9; /* Couleur au survol */
+    transform: scale(1.1); /* Légère animation au survol */
+}

@@ -68,10 +68,11 @@ export class NotesComponent {
       } else {
         // Mettre à jour la note existante
         this.ls.updateNote(this.editing);
+        console.log("Note mise à jour! ");
       }
       this.notes = this.ls.getNotes(); 
+      console.log("ICI= " + this.notes[0].content);
       this.editing = null; // Réinitialiser l'édition
-
     }
   }
 }

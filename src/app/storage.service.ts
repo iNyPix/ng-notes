@@ -54,7 +54,7 @@ export class StorageService {
   updateNote(n: Note): void {
     let existingNotes = this.getNotes();
     existingNotes = existingNotes.map(note => note.id === n.id ? n : note);
-    localStorage.setItem("tags", JSON.stringify(existingNotes));
+    localStorage.setItem("notes", JSON.stringify(existingNotes));
   }
 
   clear(): void {

@@ -1,0 +1,88 @@
+/* Conteneur principal du post-it */
+.post-it {
+    position: relative;
+    width: 250px;
+    min-height: 200px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff9b1; /* Jaune post-it par défaut */
+    color: #2c3e50; /* Texte sombre pour contraste */
+    transform: rotate(2deg); /* Léger effet de rotation pour un look "post-it" */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Effet au survol */
+  .post-it:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* En-tête du post-it */
+  .post-it-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .post-it-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: #2c3e50;
+  }
+  
+  .post-it-id {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+  }
+  
+  /* Contenu du post-it */
+  .post-it-content {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  
+  .post-it-content p {
+    margin: 0;
+    word-wrap: break-word;
+  }
+  
+  /* Tags */
+  .post-it-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .tag {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #2c3e50;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .post-it {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px auto;
+      transform: rotate(0deg); /* Pas de rotation sur mobile */
+    }
+  
+    .post-it-title {
+      font-size: 1rem;
+    }
+  
+    .post-it-content {
+      font-size: 0.9rem;
+    }
+  }

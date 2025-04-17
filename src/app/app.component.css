@@ -1,0 +1,116 @@
+/* Style global pour la page */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Titre principal */
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style du header et de la navigation */
+  header {
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    margin: 0 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #34495e;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  nav a:hover {
+    color: #3498db;
+    transform: translateY(-2px);
+  }
+  
+  nav a[routerLink].active {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+  }
+  
+  /* Contenu principal */
+  main {
+    flex: 1;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Animation pour l'apparition du contenu */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Style du footer */
+  footer {
+    text-align: center;
+    padding: 15px 0;
+    background: #2c3e50;
+    color: #ecf0f1;
+    font-size: 0.9rem;
+    margin-top: auto;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    nav li {
+      margin: 10px 0;
+    }
+  
+    main {
+      margin: 10px;
+      padding: 15px;
+    }
+  }
